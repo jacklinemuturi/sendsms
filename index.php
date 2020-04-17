@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start();    
 
     if(!isset($_SESSION['bulk']))    
     {
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="vendors/jquery-scrollbar/jquery.scrollbar.css">
 
         <!-- App styles -->
-        <link rel="stylesheet" href="css/app.min.css">
+        <link rel="stylesheet" href   ="css/app.min.css">
     </head>
 
     <body data-ma-theme="green">
@@ -137,6 +137,7 @@
                                     <h5 class="modal-title pull-left">Add Contact</h5>
                                 </div>
                                 <div class="modal-body">
+                                <p>Code sent to <b><?php echo $_SESSION['bulk']; ?></b></p>
                                 <p id="contactresponse" class="h5 text-center text-danger py-4" style="color:#32c787;"></p>
                                     <div class="md-form">
                                         <i class="fa fa-user prefix grey-text"></i>
@@ -161,63 +162,68 @@
                 <!-- graph -->
                 </li>
                 <div class="container">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Contacts</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Contacts</h4>
+                            <table class="table table-striped mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Message</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+            
+                                <?php
+                                    $id            = returnValue("users","id","phonenumber",$_SESSION['bulk']);
+                                    $allContactIds = returnFieldArrayFromTable("contacts","id","family",$id);
 
-                        <table class="table table-striped mb-0">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Message</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                      
-                            <?php
-                                $id            = returnValue("users","id","phonenumber",$_SESSION['bulk']);
-                                $allContactIds = returnFieldArrayFromTable("contacts","id","family",$id);
+                                    foreach($allContactIds as $singleContact)
+                                    {
 
-                                foreach($allContactIds as $singleContact)
-                                {
-                            ?>
-                                  <!-- modal messages -->
-                            <div class="modal-demo" id="message">
-                                <div class="modal">
+                                    
+                                ?>
+                                <!-- modal sendmessage -->
+                                <div class="modal fade" id="message<?php echo $singleContact; ?>" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Modal title</h5>
+                                                <h5 class="modal-title pull-left">Send Message to  <b><?php echo returnValue("contacts","name","id",$singleContact); ?></b></p></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis..</p>
+                                            <p id="msgbtnsresponse<?php echo $singleContact; ?>" class="h5 text-center text-danger py-4" style="color:#32c787;"></p>
+                                                <div class="md-form">
+                                                    <i class="fa fa-user prefix grey-text"></i>
+                                                    <input type="hidden" value="<?php echo returnValue("contacts","phonenumber","id",$singleContact); ?>" id="messagephone<?php echo $singleContact; ?>"/>
+                                                    <textarea type="text" id="messagetext<?php echo $singleContact; ?>" class="form-control"></textarea>
+                                                    <label for="materialFormCardEmailEx" class="font-weight-light">Text Message</label>
+                                                </div>                    
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-link">Save changes</button>
-                                                <button type="button" class="btn btn-link">Close</button>
+                                            <div class="modal-footer" id="msgbtns">
+                                                <button type="button" class="btn btn-link"  value="<?php echo $singleContact; ?>">Send Message</button>
+                                                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                                <tr>
-                                    <td><?php echo returnValue("contacts","name","id",$singleContact); ?></td>
-                                    <td><?php echo returnValue("contacts","phonenumber","id",$singleContact); ?></td>
-                                    <td><i class="zmdi zmdi-email zmdi-hc-fw" data-toggle="modal" data-target="#message"></i></td>
-                                    <td><a href="#"><i class="zmdi zmdi-edit zmdi-hc-fw"></i></a></td>
-                                    <td><a href="#"><i class="zmdi zmdi-delete zmdi-hc-fw" style="color:red;"></i></a></td>
-                                </tr>     
-                            <?php } ?>
+                                    <tr>
+                                        <td><?php echo returnValue("contacts","name","id",$singleContact); ?></td>
+                                        <td><?php echo returnValue("contacts","phonenumber","id",$singleContact); ?></td>
+                                        <td><i class="zmdi zmdi-email zmdi-hc-fw" data-toggle="modal" data-target="#message<?php echo $singleContact; ?>"></i></td>
+                                        <td><a href="#"><i class="zmdi zmdi-edit zmdi-hc-fw" ></i></a></td>
+                                        <td><a href="#"><i class="zmdi zmdi-delete zmdi-hc-fw" style="color:red;"></i></a></td>
+                                    </tr>     
+                                <?php } ?>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                </div>
-                <!-- end graph -->
+                <!-- end graph -->  
             </section>   
         </main>
 

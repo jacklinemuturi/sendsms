@@ -67,5 +67,29 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#msgbtns button").click(function(){
+        var append = $(this).attr("value");
+
+        console.log($("#messagephone"+append).val());
+        console.log($("#messagetext"+append).val());
+        
+        $.post("message_insert.php",
+        {
+            messagephone:$("#messagephone"+append).val(),
+            messagetext:$("#messagetext"+append).val()
+        },
+        function(response)
+        {
+            if(response == "sent")
+            {
+                window.location.href = "index.php";
+            }else{
+                $('#msgbtnsresponse'+append).html(response);
+            }
+        
+        });
+    })
+   
 });
 
