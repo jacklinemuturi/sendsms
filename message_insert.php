@@ -13,6 +13,7 @@ require_once 'functions.php';
 if(isset($_REQUEST['messagetext']))
 {
     $messagephone   = trim(mysqli_real_escape_string($conn, $_REQUEST['messagephone']));
+    $messagename    = trim(mysqli_real_escape_string($conn, $_REQUEST['messagename']));
     $messagetext    = trim(mysqli_real_escape_string($conn, $_REQUEST['messagetext']));
     $id             = returnValue("users","id","phonenumber",$_SESSION['bulk']);
     $send           = date("d/m/Y");
@@ -24,8 +25,8 @@ if(isset($_REQUEST['messagetext']))
 
     sendmessage($messagephone,$messagetext);
 
-    $sql = "INSERT INTO `sent_messages`(`phonenumber`,`message`,`family`,`created`)
-            VALUE('$messagephone','$messagetext','$id','$send')";
+    $sql = "INSERT INTO `sent_messages`(`phonenumber`,`name`,`message`,`family`,`created`)
+            VALUE('$messagephone','$messagename','$messagetext','$id','$send')";
 
     if(mysqli_query($conn, $sql))
     {   

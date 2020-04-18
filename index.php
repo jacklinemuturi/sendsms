@@ -85,28 +85,16 @@
                     <ul class="navigation">
                     <img style="font-size:30px;" src="demo/img/chat.png" alt="Smiley face" height="82" width="82"><span style="color:skyblue;font-size:30px;">Thesms</span>
                             <br><br><br><br>
-                        <!-- <li style="font-size:20px;" class="navigation__active"><a href="index.html"><i  class="zmdi zmdi-home"></i> Dashboard</a></li> -->
-                               <li class="navigation__sub">
-                                <a style="color:#87CEEB;font-size:15px;" href="#"><i class="zmdi zmdi-phone zmdi-hc-fw"></i> Contact</a>                           
-                            <ul>
-                                <li><a href="outbox.html"><i class="zmdi zmdi-phone zmdi-hc-fw"></i> contacts<div class=""></div>
-                                </a></li>
-                                <li><a href="boxed-layout.html"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i>group</a></li>
-                              
-                            </ul>
+                               <li><a style="color:skyblue;font-size:15px;" href="index.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i>Contact</a></li>` 
                         <li class="navigation__sub">
                             <a style="color:skyblue;font-size:15px;" href="#"><i class="zmdi zmdi-comment-more zmdi-hc-fw"></i> Bulk sms</a>
                             <ul>
-                                <li><a href="outbox.html"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Outbox<div class=""></div>
+                                <li><a href="outbox.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Outbox<div id="outbox" class=""></div>
                                 </a></li>
                                 <li><a href="boxed-layout.html"><i class="zmdi zmdi-account-box-mail zmdi-hc-fw"></i>Sender ID</a></li>
                               
                             </ul>
                         </li>
-                        <!-- <li>
-                            <a style="color:skyblue;font-size:15px;" href="#" data-toggle="modal" data-target="#modalLoginForm"><i class="zmdi zmdi-comments zmdi-hc-fw"></i>Send Message</a>
-                        </li> -->
-
                         <li class="navigation__sub">
                             <a style="color:#87CEEB;font-size:15px;" href="#"><i class="zmdi zmdi-settings zmdi-hc-fw"></i>Account Settings</a>
                             <ul>
@@ -126,12 +114,13 @@
                 <header class="content__title">
                     <div>
                         <button type="button" class="btn btn-outline-success pull-right"  data-toggle="modal" data-target="#add">Add Contact</button>
-                        <button type="button" class="btn btn-outline-success pull-right">Message All</button>    
+                        <button type="button" id="messageall" class="btn btn-outline-success pull-right">Message All</button>    
                     </div>
 
                     <!-- modal add contact -->
                     <div class="modal fade" id="add" tabindex="-1">
                         <div class="modal-dialog">
+
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title pull-left">Add Contact</h5>
@@ -184,7 +173,7 @@
                                     foreach($allContactIds as $singleContact)
                                     {
 
-                                    
+
                                 ?>
                                 <!-- modal sendmessage -->
                                 <div class="modal fade" id="message<?php echo $singleContact; ?>" tabindex="-1">
@@ -198,6 +187,7 @@
                                                 <div class="md-form">
                                                     <i class="fa fa-user prefix grey-text"></i>
                                                     <input type="hidden" value="<?php echo returnValue("contacts","phonenumber","id",$singleContact); ?>" id="messagephone<?php echo $singleContact; ?>"/>
+                                                    <input type="hidden" value="<?php echo returnValue("contacts","name","id",$singleContact); ?>" id="messagename<?php echo $singleContact; ?>"/>
                                                     <textarea type="text" id="messagetext<?php echo $singleContact; ?>" class="form-control"></textarea>
                                                     <label for="materialFormCardEmailEx" class="font-weight-light">Text Message</label>
                                                 </div>                    

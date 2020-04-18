@@ -43,7 +43,7 @@ $(document).ready(function(){
             }
         });
     }); 
-
+        // add contacts
     $("#addnew").click(function()
     { 
         // ajax post
@@ -52,7 +52,6 @@ $(document).ready(function(){
         {
             contactName:$('#contactName').val(),
             contactNumber:$('#contactNumber').val(),
-
         },
         // ajax callback
         function(response)
@@ -67,16 +66,18 @@ $(document).ready(function(){
             }
         });
     });
-
+        // message sending
     $("#msgbtns button").click(function(){
         var append = $(this).attr("value");
 
         console.log($("#messagephone"+append).val());
+        console.log($("#messagename"+append).val());
         console.log($("#messagetext"+append).val());
         
         $.post("message_insert.php",
         {
             messagephone:$("#messagephone"+append).val(),
+            messagename:$("#messagename"+append).val(),
             messagetext:$("#messagetext"+append).val()
         },
         function(response)
@@ -89,7 +90,6 @@ $(document).ready(function(){
             }
         
         });
-    })
-   
+    });
 });
 
