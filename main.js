@@ -91,5 +91,47 @@ $(document).ready(function(){
         
         });
     });
+    // forgot password_username1
+    $("#forgot1").click(function()
+    { 
+        // ajax post
+        $.post("forgot_username_update.php",
+        // ajax data
+        {
+            username_forgotpassword:$('#username_forgotpassword').val(),
+        },
+        // ajax callback
+        function(response)
+        {
+            if(response == "success")
+            {
+                window.location.href = "login.php";
+            }else{
+                $('#forgot1response').html(response); 
+            }
+        });
+    });
+    // login
+    $("#login").click(function()
+    { 
+        // ajax post
+        $.post("login_session.php",
+        // ajax data
+        {
+            login_username :$('#login_username').val(),
+            login_password :$('#login_password ').val()
+
+        },
+        // ajax callback
+        function(response)
+        {
+            if(response == "success")
+            {
+                window.location.href = "index.php";
+            }else{
+                $('#loginresponse').html(response); 
+            }
+        });
+    });
 });
 

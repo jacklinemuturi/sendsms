@@ -5,7 +5,7 @@ require_once 'functions.php';
 
 if(isset($_REQUEST['name']) && isset($_REQUEST['uname']) && isset($_REQUEST['phone']) && isset($_REQUEST['password']) && isset($_REQUEST['confirm']))
 {
-    $name     = mysqli_real_escape_string($conn, $_REQUEST['name']);
+    $name     = trim(mysqli_real_escape_string($conn, $_REQUEST['name']));
     $uname    = trim(mysqli_real_escape_string($conn, $_REQUEST['uname']));
     $phone    = trim(mysqli_real_escape_string($conn, $_REQUEST['phone']));
     $password = trim(mysqli_real_escape_string($conn, $_REQUEST['password']));

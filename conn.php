@@ -10,7 +10,7 @@
     if(!$conn){
         echo "connection failed";
     }else{
-        echo "fully connected";
+        // echo "fully connected";
     }
 
 ?>
