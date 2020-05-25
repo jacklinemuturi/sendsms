@@ -38,7 +38,9 @@ function sendmessage($phonenumber,$message)
     // close curl
     curl_close($req);
 
-    // print the raw json response
+    $i = json_decode($res);
+    return $i->status;
+
 }
 
 function formSearchString($arguments)

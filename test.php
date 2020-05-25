@@ -1,8 +1,11 @@
 <?php
 
-$names = ["kanyi","jackie","carol","natasha","maureen"];
+require_once "functions.php";
 
-foreach($names as $key=>$value){
-    echo $key;
-    echo "\n";
-}
+$phonenumber = "+254712988705";
+$message     = "hello there";
+
+$sendsms = sendmessage($phonenumber,$message);
+$i = json_decode($sendsms);
+echo $i->status;
+

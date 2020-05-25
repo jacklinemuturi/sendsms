@@ -11,7 +11,7 @@
     $isActive = returnValue("users","status","phonenumber",$_SESSION['bulk']);
     if($isActive == "pending")
     {
-        header("Location:activate.php");
+        header("Location:activation.php");
     }
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="#" class="dropdown-item"><i class="zmdi zmdi-refresh zmdi-hc-fw"></i>Refresh</a>
                              <a href="#" class="dropdown-item"><i class="zmdi zmdi-settings zmdi-hc-fw"></i>Settings</a>
-                            <a href="#" class="dropdown-item"><i class="zmdi zmdi-power zmdi-hc-fw"></i>Log out</a>
+                            <a href="logout.php" class="dropdown-item"><i class="zmdi zmdi-power zmdi-hc-fw"></i>Log out</a>
 
                         </div>
                     </div>
@@ -91,16 +91,14 @@
                             <ul>
                                 <li><a href="outbox.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Outbox<div id="outbox" class=""></div>
                                 </a></li>
-                                <li><a href="boxed-layout.html"><i class="zmdi zmdi-account-box-mail zmdi-hc-fw"></i>Sender ID</a></li>
                               
                             </ul>
                         </li>
                         <li class="navigation__sub">
                             <a style="color:#87CEEB;font-size:15px;" href="#"><i class="zmdi zmdi-settings zmdi-hc-fw"></i>Account Settings</a>
                             <ul>
-                                <li><a href="outbox.html"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Change password<div class=""></div>
+                                <li><a href="reset_forgotpassword.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Change password<div class=""></div>
                                 </a></li>
-                                <li><a href="boxed-layout.html"><i class="zmdi zmdi-account-box-mail zmdi-hc-fw"></i>Sender ID</a></li>
                               
                             </ul>
                         </li>
@@ -216,26 +214,9 @@
                 <!-- end graph -->  
             </section>   
         </main>
-
-        <!-- Javascript -->
-        <script src="vendors/jquery/jquery.min.js"></script>
-        <script src="vendors/popper.js/popper.min.js"></script>
-        <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
-        <script src="vendors/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-        <script src="vendors/jquery-scrollLock/jquery-scrollLock.min.js"></script>
-
-        <!-- Vendors: Data tables -->
-        <script src="vendors/datatables/jquery.dataTables.min.js"></script>
-        <script src="vendors/datatables-buttons/dataTables.buttons.min.js"></script>
-        <script src="vendors/datatables-buttons/buttons.print.min.js"></script>
-        <script src="vendors/jszip/jszip.min.js"></script>
-        <script src="vendors/datatables-buttons/buttons.html5.min.js"></script>
-
         <!-- App functions and actions -->
         <script src="js/app.min.js"></script>
         <script src="main.js"></script>
 
     </body>
-
-<!-- Mirrored from byrushan.com/projects/material-admin/app/2.6/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Mar 2020 08:20:21 GMT -->
 </html>

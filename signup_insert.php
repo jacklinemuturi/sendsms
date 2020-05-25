@@ -73,11 +73,13 @@ if(isset($_REQUEST['name']) && isset($_REQUEST['uname']) && isset($_REQUEST['pho
     $sql = "INSERT INTO `users`(`names`,`user_name`,`phonenumber`,`password`,`status`,`created`,`code`)
             VALUE('$name','$uname','$phone','$hashedpassword','$status','$created','$code')";
 
-    if(mysqli_query($conn, $sql))
+    if(mysqli_query($conn,$sql))
     {
         sendmessage($editedphone,$message);
         $_SESSION['bulk'] = $phone; 
         echo "success";
+    }else{
+        echo "not inserted".mysqli_error($conn);
     }
 }
 

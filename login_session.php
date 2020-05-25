@@ -3,6 +3,8 @@
 session_start();
 
 require_once "conn.php";
+require_once "functions.php";
+
 
 if(isset($_REQUEST['login_username']) && isset($_REQUEST['login_password']));
 
@@ -17,12 +19,10 @@ if(empty($login_username) || empty($login_password))
 $encpass  = md5($login_password);
 
 $select = mysqli_query($conn, "SELECT * FROM `users` WHERE `user_name`='$login_username' AND `password`='$encpass'");
-
-echo mysqli_num_rows($select);
-
 if(mysqli_num_rows($select) > 0)
 {
-    $_SESSION['loggedIn'] = $login_username;
+    $phone   = returnValue("users","phonenumber","user_name",$login_username);
+    $_SESSION['bulk'] = $phone;
 
     echo "success";
 }else{

@@ -7,7 +7,6 @@ $(document).ready(function(){
         {
             name:$('#name').val(),
             uname:$('#uname').val(),
-            email:$('#email').val(),
             phone:$('#phone').val(),
             password:$('#password').val(),
             confirm:$('#confirm').val()
@@ -105,12 +104,36 @@ $(document).ready(function(){
         {
             if(response == "success")
             {
-                window.location.href = "login.php";
+                window.location.href ="login.php";
             }else{
                 $('#forgot1response').html(response); 
             }
         });
     });
+     // reset_forgot_password
+     $("#reset").click(function()
+     { 
+         // ajax post
+         $.post("reset_forgotpassword_update.php",
+
+         // ajax data
+         {
+             old_password    :$('#old_password').val(),
+             new_password    :$('#new_password').val(),
+             confirm_password:$('#confirm_password').val()
+
+         },
+         // ajax callback
+         function(response)
+         {
+             if(response == "success")
+             {
+                 window.location.href ="login.php";
+             }else{
+                 $('#resetresponse').html(response); 
+             }
+         });
+     });
     // login
     $("#login").click(function()
     { 

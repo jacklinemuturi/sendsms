@@ -81,18 +81,16 @@
                         <li class="navigation__sub">
                             <a style="color:skyblue;font-size:15px;" href="#"><i class="zmdi zmdi-comment-more zmdi-hc-fw"></i> Bulk sms</a>
                             <ul>
-                                <li><a href="outbox.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Outbox<div id="outbox" class=""></div>
+                                <li><a href="reset_forgotpassword.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Outbox<div id="outbox" class=""></div>
                                 </a></li>
-                                <li><a href="boxed-layout.html"><i class="zmdi zmdi-account-box-mail zmdi-hc-fw"></i>Sender ID</a></li>
                               
                             </ul>
                         </li>
                         <li class="navigation__sub">
                             <a style="color:#87CEEB;font-size:15px;" href="#"><i class="zmdi zmdi-settings zmdi-hc-fw"></i>Account Settings</a>
                             <ul>
-                                <li><a href="outbox.html"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Change password<div class=""></div>
+                                <li><a href="reset_forgotpassword.php"><i class="zmdi zmdi-comment-text zmdi-hc-fw"></i> Change password<div class=""></div>
                                 </a></li>
-                                <li><a href="boxed-layout.html"><i class="zmdi zmdi-account-box-mail zmdi-hc-fw"></i>Sender ID</a></li>
                               
                             </ul>
                         </li>
